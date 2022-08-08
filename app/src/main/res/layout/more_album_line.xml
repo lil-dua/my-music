@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_margin="5dp"
+    android:layout_marginTop="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:cardCornerRadius="10dp">
+
+        <LinearLayout
+            android:id="@+id/linearLayoutAlbum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#191414">
+
+            <ImageView
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:id="@+id/imageViewMoreAlbum"
+                android:layout_width="180dp"
+                android:layout_height="180dp"/>
+
+            <TextView
+                android:textColor="@color/white"
+                android:maxWidth="200dp"
+                android:textSize="20sp"
+                android:text="Album Name"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:id="@+id/textViewMoreAlbum"
+                android:layout_marginRight="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"/>
+
+            <TextView
+                android:textColor="#F3FFC107"
+                android:textSize="15sp"
+                android:maxWidth="200dp"
+                android:text="Album Singer"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:id="@+id/textViewSingerMoreAlbum"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</LinearLayout>

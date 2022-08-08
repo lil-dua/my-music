@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/drawable/custom_backgound.xml" value="0.199" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/layout/activity_category_with_theme.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/layout/activity_list_songs.xml" value="0.371875" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/layout/activity_more_album.xml" value="0.2462962962962963" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/layout/activity_more_playlist.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/layout/activity_more_theme.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/layout/activity_play_music.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/layout/album_line.xml" value="0.371875" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/layout/banner_line.xml" value="0.371875" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/layout/category_with_theme_line.xml" value="0.14666666666666667" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/layout/fragment_album.xml" value="0.371875" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/layout/fragment_banner.xml" value="0.371875" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/layout/fragment_home.xml" value="0.3671875" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/layout/fragment_music_dish.xml" value="0.19289340101522842" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/layout/fragment_play_list_music.xml" value="0.34517766497461927" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/layout/fragment_playlist.xml" value="0.3388888888888889" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/layout/fragment_search.xml" value="0.25" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/layout/fragment_themencategory.xml" value="0.371875" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/layout/fragment_topfavoritesong.xml" value="0.371875" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/layout/listsong_line.xml" value="0.371875" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/layout/more_album_line.xml" value="0.275" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/layout/more_playlist_line.xml" value="0.37083333333333335" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/layout/more_theme_line.xml" value="0.31666666666666665" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/layout/play_music_line.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/layout/playlist_line.xml" value="0.371875" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/layout/search_song_line.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/layout/topsong_line.xml" value="0.371875" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/menu/search_view.xml" value="0.25" />
+        <entry key="..\:/AndroidStudioProject/MyMusic/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1995" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

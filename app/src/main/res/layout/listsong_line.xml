@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:elevation="5dp">
+
+    <RelativeLayout
+        android:background="#191414"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_margin="15dp"
+            android:textSize="20sp"
+            android:text="1"
+            android:textColor="@color/white"
+            android:id="@+id/textViewListSongIndex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/textViewNameOfSong"
+            android:textSize="20sp"
+            android:text="Name of Song"
+            android:textColor="@color/white"
+            android:layout_toRightOf="@id/textViewListSongIndex"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:maxWidth="250dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/textViewSinger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewNameOfSong"
+            android:layout_toRightOf="@id/textViewListSongIndex"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Singer"
+            android:textColor="@color/yellow"
+            android:textSize="17dp" />
+        <ImageView
+            android:src="@drawable/ic_love_none_50"
+            android:layout_marginRight="5dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:id="@+id/imageViewLikesOfSong"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ListSongsActivity"
+    android:fitsSystemWindows="true"
+    android:id="@+id/coordinatorLayout"
+    android:background="@color/black_love">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:fitsSystemWindows="true"
+        android:id="@+id/appbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            app:title="Song Name"
+            app:expandedTitleGravity="bottom|center"
+            app:expandedTitleMarginBottom="25dp"
+            android:background="@mipmap/ic_launcher_music"
+            android:fitsSystemWindows="true"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            android:id="@+id/collapsingToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <View
+                android:background="@drawable/custom_backgound"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarListSong"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                android:elevation="6dp"
+                android:layout_width="match_parent"
+                android:layout_height="55dp">
+
+            </androidx.appcompat.widget.Toolbar>
+            <ImageView
+                android:elevation="6dp"
+                android:layout_marginTop="10dp"
+                android:src="@mipmap/ic_launcher_music"
+                android:layout_marginBottom="50dp"
+                android:layout_gravity="center"
+                android:id="@+id/imageViewListSong"
+                android:layout_width="170dp"
+                android:layout_height="170dp"/>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        app:fabSize="normal"
+        android:backgroundTint="@color/yellow"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_play_100"
+        app:layout_anchor="@id/appbarLayout"
+        app:layout_anchorGravity="bottom|right"
+        android:layout_marginRight="50dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_marginTop="30dp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleViewListSong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android.mymusic">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_play_100"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_music"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MyMusic">
+        <activity
+            android:name=".activity.PlayMusicActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.MoreAlbumActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.CategoryWithThemeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.MoreThemeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.MorePlaylistActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ListSongsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,8 +1,9 @@
 Demo App: My Music.
 Hi! My name is Ryan. I'm a Android Developer. This is a demo of a music player I wrote, so it's based on a template I've read on the internet.Now take a preview:
 
-<img src="Screenshot_1.png" width = "300" >   # <img src="Screenshot_2.png" width = "300" >
-
+<img src="Screenshot_1.png" width = "300" >   # <img src="Screenshot_2.png" width = "300" > <img src="Screenshot_3.png" width = "300" >
+#
+<img src="Screenshot_4.png" width = "300" > <img src="Screenshot_5.png" width = "300" >
 
 
 # 💫About Me :

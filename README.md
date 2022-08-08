@@ -1,7 +1,7 @@
 Demo App: My Music.
 Hi! My name is Ryan. I'm a Android Developer. This is a demo of a music player I wrote, so it's based on a template I've read on the internet.Now take a preview:
 
-![Screenshot](screenshot_1.png)
+![Screenshot](screenshot_1.png)](https://github.com/lil-dua/my-music-demo/blob/master/Screenshot_1.png?raw=true)
 
 
 # 💫About Me :

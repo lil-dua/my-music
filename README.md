@@ -3,21 +3,14 @@
   <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="30px"/>
 </h1>
 
-**Demo App: My Music.**
+##Demo App: My Music.
 #
 This is a demo of a music player I wrote, so it's based on a template I've read on the internet. Now take a preview:
 
+<pre>
 <img src="Screenshot_1.png" width = "300" > <img src="Screenshot_2.png" width = "300" > <img src="Screenshot_3.png" width = "300" >
 #
 <img src="Screenshot_4.png" width = "300" > <img src="Screenshot_5.png" width = "300" >
-
-
-
-
-# To do list App
-To do list application for Android using Dialog.
-<pre>
-<img src="Screenshot_1.png" width = "300" >     <img src="Screenshot_2.png" width = "300" >     <img src="Screenshot_3.png" width = "300" >
 </pre>
 # 💫About Me :
 

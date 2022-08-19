@@ -1,13 +1,35 @@
+<h1 align="center">
+  hey there
+  <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="30px"/>
+</h1>
+
 **Demo App: My Music.**
 #
-Hi! My name is Ryan. I'm a Android Developer. This is a demo of a music player I wrote, so it's based on a template I've read on the internet. Now take a preview:
+This is a demo of a music player I wrote, so it's based on a template I've read on the internet. Now take a preview:
 
 <img src="Screenshot_1.png" width = "300" > <img src="Screenshot_2.png" width = "300" > <img src="Screenshot_3.png" width = "300" >
 #
 <img src="Screenshot_4.png" width = "300" > <img src="Screenshot_5.png" width = "300" >
 
 
+
+
+# To do list App
+To do list application for Android using Dialog.
+<pre>
+<img src="Screenshot_1.png" width = "300" >     <img src="Screenshot_2.png" width = "300" >     <img src="Screenshot_3.png" width = "300" >
+</pre>
 # 💫About Me :
+
+I'm a android developer from Vietnam.
+
+- :telescope: I’m working as a Software Engineer and contributing to frontend and backend for building web applications.
+
+- :seedling: Exploring Technical Content Writing.
+
+- :zap: In my free time, I solve problems on GeeksforGeeks and read tech articles.
+
+- :mailbox:How to reach me: [![Linkedin Badge](https://img.shields.io/badge/-kakbar-blue?style=flat&logo=Linkedin&logoColor=white)](your-linkedin-url)
 
 ## 🌐Socials
 [![Facebook](https://img.shields.io/badge/Facebook-%231877F2.svg?logo=Facebook&logoColor=white)](https://facebook.com/https://www.facebook.com/hoang.ryann/) [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/https://www.instagram.com/hoang.ryann/) [![Reddit](https://img.shields.io/badge/Reddit-%23FF4500.svg?logo=Reddit&logoColor=white)](https://reddit.com/user/https://www.reddit.com/user/_VN-RyanH_) [![Stack Overflow](https://img.shields.io/badge/-Stackoverflow-FE7A16?logo=stack-overflow&logoColor=white)](https://stackoverflow.com/users/16934787) 
@@ -27,3 +49,4 @@ Hi! My name is Ryan. I'm a Android Developer. This is a demo of a music player I
 
 ---
 [![](https://visitcount.itsvg.in/api?id=lil-dua&icon=0&color=1)](https://visitcount.itsvg.in)
+

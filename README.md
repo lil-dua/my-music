@@ -4,7 +4,6 @@
 </h1>
 
 # Demo App: My Music.
-#
 This is a demo of a music player I wrote, so it's based on a template I've read on the internet. Now take a preview:
 
 <pre>

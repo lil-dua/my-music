@@ -1,5 +1,6 @@
 package com.android.mymusic.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
@@ -108,7 +109,7 @@ public class ListSongsActivity extends AppCompatActivity {
         Call<List<Songs>> callback = dataservice.GetListSongWithAdvertisement(idAdvertisement);
         callback.enqueue(new Callback<List<Songs>>() {
             @Override
-            public void onResponse(Call<List<Songs>> call, Response<List<Songs>> response) {
+            public void onResponse(@NonNull Call<List<Songs>> call, Response<List<Songs>> response) {
                 songsArrayList = (ArrayList<Songs>) response.body();
                 listSongAdapter = new ListSongAdapter(ListSongsActivity.this,songsArrayList);
                 recyclerViewListSong.setLayoutManager(new LinearLayoutManager(ListSongsActivity.this));
@@ -226,13 +227,10 @@ public class ListSongsActivity extends AppCompatActivity {
 
     private void eventClick(){
         floatingActionButton.setEnabled(true);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ListSongsActivity.this,PlayMusicActivity.class);
-                intent.putExtra("AllSong",songsArrayList);
-                startActivity(intent);
-            }
+        floatingActionButton.setOnClickListener(view -> {
+            Intent intent = new Intent(ListSongsActivity.this,PlayMusicActivity.class);
+            intent.putExtra("AllSong",songsArrayList);
+            startActivity(intent);
         });
     }
 }

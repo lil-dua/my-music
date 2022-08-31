@@ -11,6 +11,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.android.mymusic.R;
+import com.android.mymusic.activity.PlayMusicActivity;
+import com.android.mymusic.model.Songs;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class Fragment_Music_Dish extends Fragment {
     View view;
@@ -22,4 +27,5 @@ public class Fragment_Music_Dish extends Fragment {
        imageViewPlayMusicImage = view.findViewById(R.id.imageViewPlayMusicImage);
         return view;
     }
+
 }

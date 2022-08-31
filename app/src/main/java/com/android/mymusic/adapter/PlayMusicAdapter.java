@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.mymusic.R;
 import com.android.mymusic.model.Songs;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -51,6 +53,7 @@ public class PlayMusicAdapter extends RecyclerView.Adapter<PlayMusicAdapter.View
             txtPlayMusicIndex = itemView.findViewById(R.id.textViewPlayMusicIndex);
             txtPlayMusicNameSong =itemView.findViewById(R.id.textViewPlayMusicNameSong);
             txtPlayMusicSinger = itemView.findViewById(R.id.textViewPlayMusicSinger);
+
         }
     }
 }

@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -18,7 +19,9 @@ import android.widget.TextView;
 
 import com.android.mymusic.R;
 import com.android.mymusic.adapter.ViewPagerPlayMusic;
+import com.android.mymusic.fragment.Fragment_Music_Dish;
 import com.android.mymusic.model.Songs;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -37,7 +40,7 @@ public class PlayMusicActivity extends AppCompatActivity {
     public static ArrayList<Songs> songsArrayList = new ArrayList<>();
     public static ViewPagerPlayMusic viewPagerPlayMusic;
     MediaPlayer mediaPlayer;
-
+    Fragment_Music_Dish fragment_music_dish;
     int position = 0;
     boolean repeat = false;
     boolean checkRandom = false;
@@ -50,21 +53,26 @@ public class PlayMusicActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         //-----------------------------
+
         Mapping();
         Init();
         GetDataFromIntent();
         EventClick();
+        FirstAction();  // fixed first action of play music when the PLayMusicActivity initialized.
 
     }
 
+    private void FirstAction(){
+        mediaPlayer = new MediaPlayer();
+        mediaPlayer.getCurrentPosition();
+        imageButtonPlay.setImageResource(R.drawable.ic_pause_100);
+        new PlayMusic().execute(songsArrayList.get(position).getSongLink());
+        Objects.requireNonNull(getSupportActionBar()).setTitle(songsArrayList.get(position).getSongName());
+        UpdateTime();
+
+//        Picasso.with(this).load(songsArrayList.get(position).getSongImage()).into();
+    }
     private void EventClick() {
-//        Handler handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                if()
-//            }
-//        },500);
         //----------------Button Play-----------------
         imageButtonPlay.setOnClickListener(view -> {
                 if(mediaPlayer != null && mediaPlayer.isPlaying()){
@@ -163,7 +171,7 @@ public class PlayMusicActivity extends AppCompatActivity {
             handler1.postDelayed(() -> {
                 imageButtonPrevious.setClickable(true);
                 imageButtonNext.setClickable(true);
-            },5000);
+            },500);
         });
         //-----------------Button Previous-----------------
         imageButtonPrevious.setOnClickListener(view -> {
@@ -201,7 +209,7 @@ public class PlayMusicActivity extends AppCompatActivity {
             handler1.postDelayed(() -> {
                 imageButtonPrevious.setClickable(true);
                 imageButtonNext.setClickable(true);
-            },5000);
+            },500);
         });
     }
 

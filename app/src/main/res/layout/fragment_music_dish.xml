@@ -5,10 +5,10 @@
     android:background="@color/black_love">
 
     <ImageView
-
+        android:src="@mipmap/ic_launcher_music"
         android:background="@drawable/custom_backgound"
         android:id="@+id/imageViewPlayMusicImage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.mymusic.R;
 import com.android.mymusic.adapter.TopSongAdapter;
+import com.android.mymusic.model.Songs;
 import com.android.mymusic.model.TopFavoriteSong;
 import com.android.mymusic.service.APIService;
 import com.android.mymusic.service.Dataservice;
@@ -34,30 +35,33 @@ public class Fragment_TopFavoriteSong extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_topfavoritesong,container,false);
+        // mapping recycleView
         recyclerViewTopSong = view.findViewById(R.id.recycleViewTopSong);
+        // get Data
         GetData();
         return view;
     }
 
     private void GetData() {
         Dataservice dataservice = APIService.getService();
-        Call<List<TopFavoriteSong>> callback = dataservice.GetFavoriteSong();
-        callback.enqueue(new Callback<List<TopFavoriteSong>>() {
+        Call<List<Songs>> callback = dataservice.GetFavoriteSong();
+        callback.enqueue(new Callback<List<Songs>>() {
             @Override
-            public void onResponse(Call<List<TopFavoriteSong>> call, Response<List<TopFavoriteSong>> response) {
-                ArrayList<TopFavoriteSong> favoriteSongArrayList = (ArrayList<TopFavoriteSong>) response.body();
-                topSongAdapter = new TopSongAdapter(getActivity(),favoriteSongArrayList);
+            public void onResponse(Call<List<Songs>> call, Response<List<Songs>> response) {
+                ArrayList<Songs> songsArrayList = (ArrayList<Songs>) response.body();
+
+                topSongAdapter = new TopSongAdapter(getActivity(),songsArrayList);
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-                linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
                 recyclerViewTopSong.setLayoutManager(linearLayoutManager);
                 recyclerViewTopSong.setAdapter(topSongAdapter);
-
             }
 
             @Override
-            public void onFailure(Call<List<TopFavoriteSong>> call, Throwable t) {
+            public void onFailure(Call<List<Songs>> call, Throwable t) {
 
             }
+
+
         });
     }
 }

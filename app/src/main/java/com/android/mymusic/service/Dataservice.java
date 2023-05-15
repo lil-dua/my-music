@@ -37,7 +37,7 @@ public interface Dataservice {
 
     //Get data of top favorite songs from server
     @GET("topfavoritesongs.php")
-    Call<List<TopFavoriteSong>> GetFavoriteSong();
+    Call<List<Songs>> GetFavoriteSong();
 
     @FormUrlEncoded
     @POST("listsong.php")

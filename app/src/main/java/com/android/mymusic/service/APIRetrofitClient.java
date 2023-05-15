@@ -1,6 +1,5 @@
 package com.android.mymusic.service;
 
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.util.Arrays;
@@ -24,7 +23,7 @@ public class APIRetrofitClient {
                                     .protocols(Arrays.asList(Protocol.HTTP_1_1))
                                     .build();
 
-        Gson gson = new GsonBuilder().setLenient().create();
+        new GsonBuilder().setLenient().create();
 
         retrofit = new Retrofit.Builder()
                         .baseUrl(base_url)

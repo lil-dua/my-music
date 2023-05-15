@@ -10,7 +10,6 @@
     tools:context=".activity.CategoryWithThemeActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:background="@drawable/custom_backgound"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         android:id="@+id/toolbarCategoryWithTheme"
         android:layout_width="match_parent"

@@ -4,7 +4,22 @@
     android:layout_height="match_parent"
     android:background="#EB191414">
 
+    <TextView
+        android:id="@+id/textTitleSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Search"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
     <com.google.android.material.appbar.AppBarLayout
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/textTitleSearch"
         android:id="@+id/appbarLayoutSearchSong"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

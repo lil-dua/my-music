@@ -84,6 +84,7 @@ public class Fragment_Search extends Fragment {
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
                     recyclerViewSearchSong.setLayoutManager(linearLayoutManager);
                     recyclerViewSearchSong.setAdapter(searchSongAdapter);
+
                     txtNoneData.setVisibility(View.GONE);
                     recyclerViewSearchSong.setVisibility(View.VISIBLE);
                 }else {

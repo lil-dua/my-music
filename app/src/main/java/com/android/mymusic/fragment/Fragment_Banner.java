@@ -62,19 +62,16 @@ public class Fragment_Banner extends Fragment {
                 viewPager.setAdapter(bannerAdapter);
                 circleIndicator.setViewPager(viewPager);
                 handler = new Handler();
-                runnable = new Runnable() {
-                    @Override
-                    public void run() {
-                        currentItem = viewPager.getCurrentItem();
-                        currentItem++;
-                        //when viewpager go to the end, it with come back to the first viewpager
-                        if(currentItem >= viewPager.getAdapter().getCount()){
-                            currentItem = 0;
-                        }
-                        viewPager.setCurrentItem(currentItem,true);
-                        //delay for scroll between each other viewpager
-                        handler.postDelayed(runnable,9000);
+                runnable = () -> {
+                    currentItem = viewPager.getCurrentItem();
+                    currentItem++;
+                    //when viewpager go to the end, it with come back to the first viewpager
+                    if(currentItem >= viewPager.getAdapter().getCount()){
+                        currentItem = 0;
                     }
+                    viewPager.setCurrentItem(currentItem,true);
+                    //delay for scroll between each other viewpager
+                    handler.postDelayed(runnable,9000);
                 };
                 handler.postDelayed(runnable,9000);
             }

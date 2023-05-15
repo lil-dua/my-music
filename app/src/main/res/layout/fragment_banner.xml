@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="180dp"></androidx.viewpager.widget.ViewPager>
+            android:layout_height="180dp"/>
 
         <me.relex.circleindicator.CircleIndicator
             android:layout_marginTop="10dp"
-            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@id/viewPager"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
             android:id="@+id/indicatorDefault"
             android:layout_width="wrap_content"
-            android:layout_height="13dp">
-        </me.relex.circleindicator.CircleIndicator>
+            android:layout_height="13dp"/>
 
     </RelativeLayout>
 
-</ScrollView>
+</RelativeLayout>

@@ -63,39 +63,33 @@ public class ListSongAdapter extends RecyclerView.Adapter<ListSongAdapter.ViewHo
             txtSongName = itemView.findViewById(R.id.textViewNameOfSong);
             txtSinger = itemView.findViewById(R.id.textViewSinger);
             imageViewLike = itemView.findViewById(R.id.imageViewLikesOfSong);
-            imageViewLike.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    imageViewLike.setImageResource(R.drawable.ic_love_50);
-                    Toast.makeText(context, "Đã thích!", Toast.LENGTH_SHORT).show();
-                    Dataservice dataservice = APIService.getService();
-                    Call<String> callback = dataservice.UpdateLikes("1",songsArrayList.get(getPosition()).getIdSong());
-                    callback.enqueue(new Callback<String>() {
-                        @Override
-                        public void onResponse(Call<String> call, Response<String> response) {
-                            String result = response.body();
-                            if(result.equals("Success")){
-                                Toast.makeText(context, "Da thich!", Toast.LENGTH_SHORT).show();
-                            }else {
-                                Toast.makeText(context, "Xin thử lại.", Toast.LENGTH_SHORT).show();
-                            }
+            imageViewLike.setOnClickListener(view -> {
+                imageViewLike.setImageResource(R.drawable.ic_love_50);
+                Toast.makeText(context, "Đã thích!", Toast.LENGTH_SHORT).show();
+                Dataservice dataservice = APIService.getService();
+                Call<String> callback = dataservice.UpdateLikes("1",songsArrayList.get(getPosition()).getIdSong());
+                callback.enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        String result = response.body();
+                        if(result.equals("Success")){
+                            Toast.makeText(context, "Da thich!", Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(context, "Xin thử lại.", Toast.LENGTH_SHORT).show();
                         }
+                    }
 
-                        @Override
-                        public void onFailure(Call<String> call, Throwable t) {
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
 
-                        }
-                    });
-                    imageViewLike.setEnabled(false);
-                }
+                    }
+                });
+                imageViewLike.setEnabled(false);
             });
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(context, PlayMusicActivity.class);
-                    intent.putExtra("Song",songsArrayList.get(getPosition()));
-                    context.startActivity(intent);
-                }
+            itemView.setOnClickListener(view -> {
+                Intent intent = new Intent(context, PlayMusicActivity.class);
+                intent.putExtra("Song",songsArrayList.get(getPosition()));
+                context.startActivity(intent);
             });
         }
     }

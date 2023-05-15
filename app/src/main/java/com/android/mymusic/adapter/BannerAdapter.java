@@ -48,24 +48,15 @@ public class BannerAdapter extends PagerAdapter {
         View view = inflater.inflate(R.layout.banner_line,null);
 
         ImageView imgBackgroundBanner = view.findViewById(R.id.imgViewBackgroundBanner);
-        ImageView imgSongBanner = view.findViewById(R.id.imgViewBanner);
-        TextView txtTitleSongBanner = view.findViewById(R.id.textViewTitleBanner);
-        TextView txtContentBanner = view.findViewById(R.id.txtContentBanner);
 
         //Load the data and push it on the banner
         Picasso.with(context).load(arrayListBanner.get(position).getImaget()).into(imgBackgroundBanner);
-        Picasso.with(context).load(arrayListBanner.get(position).getSongImage()).into(imgSongBanner);
-        txtTitleSongBanner.setText(arrayListBanner.get(position).getSongName());
-        txtContentBanner.setText(arrayListBanner.get(position).getContent());
 
         //set Onclick function user receipted when click on the advertisement of the song
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, ListSongsActivity.class);
-                intent.putExtra("banner",arrayListBanner.get(position));
-                context.startActivity(intent);
-            }
+        view.setOnClickListener(view1 -> {
+            Intent intent = new Intent(context, ListSongsActivity.class);
+            intent.putExtra("banner",arrayListBanner.get(position));
+            context.startActivity(intent);
         });
         // add View custom form Fragment_Banner Class: GetData()
         container.addView(view);

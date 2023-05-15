@@ -48,12 +48,9 @@ public class Fragment_Playlist extends Fragment {
         listViewPlaylist = view.findViewById(R.id.listViewPlaylist);
         GetData();
         //------------More Playlist--------------
-        txtMorePlaylist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), MorePlaylistActivity.class);
-                startActivity(intent);
-            }
+        txtMorePlaylist.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(), MorePlaylistActivity.class);
+            startActivity(intent);
         });
         //----------------------------------------
         return view;
@@ -69,13 +66,10 @@ public class Fragment_Playlist extends Fragment {
                 playlistAdapter = new PlaylistAdapter(getActivity(), android.R.layout.simple_list_item_1,playlistArrayList);
                 listViewPlaylist.setAdapter(playlistAdapter);
                 setListViewHeightBasedOnChildren(listViewPlaylist);
-                listViewPlaylist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        Intent intent = new Intent(getActivity(), ListSongsActivity.class);
-                        intent.putExtra("itemPlaylist",playlistArrayList.get(i));
-                        startActivity(intent);
-                    }
+                listViewPlaylist.setOnItemClickListener((adapterView, view, i, l) -> {
+                    Intent intent = new Intent(getActivity(), ListSongsActivity.class);
+                    intent.putExtra("itemPlaylist",playlistArrayList.get(i));
+                    startActivity(intent);
                 });
 
             }

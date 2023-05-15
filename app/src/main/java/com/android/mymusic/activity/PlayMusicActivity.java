@@ -21,6 +21,7 @@ import com.android.mymusic.R;
 import com.android.mymusic.adapter.ViewPagerPlayMusic;
 import com.android.mymusic.fragment.Fragment_Music_Dish;
 import com.android.mymusic.model.Songs;
+import com.android.mymusic.model.TopFavoriteSong;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;

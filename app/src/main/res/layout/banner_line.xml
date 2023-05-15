@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:cardCornerRadius="20dp">
+
+
         
     <ImageView
         android:id="@+id/imgViewBackgroundBanner"
@@ -11,51 +23,8 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/custom_backgound"/>
+        android:layout_height="200dp"/>
 
-    <RelativeLayout
-        android:id="@+id/relative1"
-        android:layout_alignBottom="@id/imgViewBackgroundBanner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:id="@+id/imgViewBanner"
-            android:padding="2dp"
-            android:layout_width="70dp"
-            android:layout_height="70dp"/>
-        <TextView
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:text="Name of Song"
-            android:textSize="17dp"
-            android:id="@+id/textViewTitleBanner"
-            android:layout_toRightOf="@id/imgViewBanner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/imgViewBanner"/>
-        <RelativeLayout
-            android:layout_marginTop="7dp"
-            android:layout_below="@id/textViewTitleBanner"
-            android:layout_toRightOf="@id/imgViewBanner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/txtContentBanner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="40dp"
-                android:maxLines="2"
-                android:textColor="@color/white"
-                android:text="day la noi dung cua quang cao ban muon gioi thieu"
-                android:textSize="13sp" />
-
-        </RelativeLayout>
-    </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

@@ -6,8 +6,10 @@ import androidx.fragment.app.FragmentActivity;
 
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import com.android.mymusic.fragment.Fragment_Album;
 import com.android.mymusic.fragment.Fragment_Home;
 import com.android.mymusic.fragment.Fragment_Search;
+import com.android.mymusic.fragment.Fragment_TopFavoriteSong;
 
 public class MyViewPagerAdapter extends FragmentStateAdapter {
 
@@ -20,10 +22,12 @@ public class MyViewPagerAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
         switch (position){
-            case 0:
-                return new Fragment_Home();
+
             case 1:
                 return new Fragment_Search();
+            case 2:
+                return new Fragment_TopFavoriteSong();
+            case 0:
             default:
                 return new Fragment_Home();
         }
@@ -31,6 +35,6 @@ public class MyViewPagerAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 2;
+        return 3;
     }
 }

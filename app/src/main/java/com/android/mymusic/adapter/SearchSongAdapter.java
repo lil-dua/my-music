@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.mymusic.R;
+import com.android.mymusic.activity.ListSongsActivity;
 import com.android.mymusic.activity.PlayMusicActivity;
 import com.android.mymusic.model.Songs;
 import com.android.mymusic.service.APIService;
@@ -64,34 +65,30 @@ public class SearchSongAdapter extends RecyclerView.Adapter<SearchSongAdapter.Vi
             txtSingerName = itemView.findViewById(R.id.textViewSearchSinger);
             imageViewSong = itemView.findViewById(R.id.imageViewSearch);
             imageViewLikes = itemView.findViewById(R.id.imageViewSearchLikes);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(context, PlayMusicActivity.class);
-                    intent.putExtra("Song",songsArrayList.get(getPosition()));
-                    context.startActivity(intent);
-                }
+            // set item onClick
+            itemView.setOnClickListener(view -> {
+                Intent intent = new Intent(context, PlayMusicActivity.class);
+                intent.putExtra("Song",songsArrayList.get(getPosition()));
+                context.startActivity(intent);
             });
 
-            imageViewLikes.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    imageViewLikes.setImageResource(R.drawable.ic_love_50);
-                    Dataservice dataservice = APIService.getService();
-                    Call<String> callback = dataservice.UpdateLikes("1",songsArrayList.get(getPosition()).getIdSong());
-                    callback.enqueue(new Callback<String>() {
-                        @Override
-                        public void onResponse(Call<String> call, Response<String> response) {
-                            Toast.makeText(context, "Đã thích", Toast.LENGTH_SHORT).show();
-                        }
+            // update like
+            imageViewLikes.setOnClickListener(view -> {
+                imageViewLikes.setImageResource(R.drawable.ic_love_50);
+                Dataservice dataservice = APIService.getService();
+                Call<String> callback = dataservice.UpdateLikes("1",songsArrayList.get(getPosition()).getIdSong());
+                callback.enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        Toast.makeText(context, "Đã thích", Toast.LENGTH_SHORT).show();
+                    }
 
-                        @Override
-                        public void onFailure(Call<String> call, Throwable t) {
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
 
-                        }
-                    });
-                    imageViewLikes.setEnabled(false);
-                }
+                    }
+                });
+                imageViewLikes.setEnabled(false);
             });
         }
     }

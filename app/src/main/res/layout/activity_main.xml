@@ -17,13 +17,12 @@
     
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/myTabLayout"
-        app:tabIndicatorColor="@color/white"
         app:tabMode="fixed"
-        app:tabSelectedTextColor="#F3FFC107"
-        app:tabTextColor="@color/white"
+        app:tabIndicatorColor="#F3FFC107"
         app:tabIconTint="@color/white"
+        app:tabSelectedTextColor="#F3FFC107"
+        app:tabBackground="@color/primary_black"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#191414" />
+        android:layout_height="60dp" />
     
 </LinearLayout>

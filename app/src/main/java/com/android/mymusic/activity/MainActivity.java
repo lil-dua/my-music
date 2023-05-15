@@ -35,13 +35,14 @@ public class MainActivity extends AppCompatActivity {
 
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
            switch (position){
-               case 0:
-                   tab.setText("Home");
+               case 0:  //home
                    tab.setIcon(R.drawable.ic_home_50);
                    break;
-               case 1:
-                   tab.setText("Search");
+               case 1:  //search
                    tab.setIcon(R.drawable.ic_search_50);
+                   break;
+               case 2:
+                   tab.setIcon(R.drawable.ic_love_50);
                    break;
            }
         }).attach(); //must remember this .attach()

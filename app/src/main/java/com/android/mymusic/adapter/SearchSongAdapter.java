@@ -58,13 +58,12 @@ public class SearchSongAdapter extends RecyclerView.Adapter<SearchSongAdapter.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView txtSongName,txtSingerName;
-        ImageView imageViewSong,imageViewLikes;
+        ImageView imageViewSong;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtSongName = itemView.findViewById(R.id.textViewSearchSong);
             txtSingerName = itemView.findViewById(R.id.textViewSearchSinger);
             imageViewSong = itemView.findViewById(R.id.imageViewSearch);
-            imageViewLikes = itemView.findViewById(R.id.imageViewSearchLikes);
             // set item onClick
             itemView.setOnClickListener(view -> {
                 Intent intent = new Intent(context, PlayMusicActivity.class);
@@ -72,24 +71,6 @@ public class SearchSongAdapter extends RecyclerView.Adapter<SearchSongAdapter.Vi
                 context.startActivity(intent);
             });
 
-            // update like
-            imageViewLikes.setOnClickListener(view -> {
-                imageViewLikes.setImageResource(R.drawable.ic_love_50);
-                Dataservice dataservice = APIService.getService();
-                Call<String> callback = dataservice.UpdateLikes("1",songsArrayList.get(getPosition()).getIdSong());
-                callback.enqueue(new Callback<String>() {
-                    @Override
-                    public void onResponse(Call<String> call, Response<String> response) {
-                        Toast.makeText(context, "Đã thích", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onFailure(Call<String> call, Throwable t) {
-
-                    }
-                });
-                imageViewLikes.setEnabled(false);
-            });
         }
     }
 }

@@ -7,7 +7,6 @@ import com.android.mymusic.model.CategoryTheme;
 import com.android.mymusic.model.Playlist;
 import com.android.mymusic.model.Songs;
 import com.android.mymusic.model.Theme;
-import com.android.mymusic.model.TopFavoriteSong;
 
 import java.util.List;
 

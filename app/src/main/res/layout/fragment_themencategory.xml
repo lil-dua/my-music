@@ -13,22 +13,13 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:textColor="@color/white"
+            android:textColor="@color/primary_text"
             android:textStyle="bold"
             android:textSize="20sp"
             android:text="Theme And Category"
             android:id="@+id/textViewTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-
-        <TextView
-            android:id="@+id/textViewMoreCategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:text="More"
-            android:textColor="#F3FFC107"
-            android:textSize="18sp" />
 
 
     </RelativeLayout>

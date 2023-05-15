@@ -58,15 +58,12 @@ public class MoreAlbumAdapter extends RecyclerView.Adapter<MoreAlbumAdapter.View
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageViewMoreAlbum = itemView.findViewById(R.id.imageViewMoreAlbum);
-            txtMoreAlbum = itemView.findViewById(R.id.textViewMoreAlbum);
+            txtMoreAlbum = itemView.findViewById(R.id.textViewMoreAlbumName);
             txtSingerMoreAlbum = itemView.findViewById(R.id.textViewSingerMoreAlbum);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(context, ListSongsActivity.class);
-                    intent.putExtra("idAlbum",albumArrayList.get(getPosition()));
-                    context.startActivity(intent);
-                }
+            itemView.setOnClickListener(view -> {
+                Intent intent = new Intent(context, ListSongsActivity.class);
+                intent.putExtra("idAlbum",albumArrayList.get(getPosition()));
+                context.startActivity(intent);
             });
         }
     }

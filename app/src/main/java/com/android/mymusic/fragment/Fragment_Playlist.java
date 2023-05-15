@@ -5,13 +5,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,7 +16,6 @@ import androidx.fragment.app.Fragment;
 
 import com.android.mymusic.R;
 import com.android.mymusic.activity.ListSongsActivity;
-import com.android.mymusic.activity.MorePlaylistActivity;
 import com.android.mymusic.adapter.PlaylistAdapter;
 import com.android.mymusic.model.Playlist;
 import com.android.mymusic.service.APIService;
@@ -34,7 +30,7 @@ import retrofit2.Response;
 
 public class Fragment_Playlist extends Fragment {
     View view;
-    TextView txtTitlePlaylist,txtMorePlaylist;
+    TextView txtTitlePlaylist;
     ListView listViewPlaylist;
     PlaylistAdapter playlistAdapter;
     ArrayList<Playlist> playlistArrayList;
@@ -44,15 +40,8 @@ public class Fragment_Playlist extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_playlist,container,false);
         txtTitlePlaylist = view.findViewById(R.id.textViewTitlePlaylist);
-        txtMorePlaylist = view.findViewById(R.id.textViewMorePLaylist);
         listViewPlaylist = view.findViewById(R.id.listViewPlaylist);
         GetData();
-        //------------More Playlist--------------
-        txtMorePlaylist.setOnClickListener(view -> {
-            Intent intent = new Intent(getActivity(), MorePlaylistActivity.class);
-            startActivity(intent);
-        });
-        //----------------------------------------
         return view;
     }
 
@@ -61,7 +50,7 @@ public class Fragment_Playlist extends Fragment {
         Call<List<Playlist>> callback = dataservice.GetPLaylist();
         callback.enqueue(new Callback<List<Playlist>>() {
             @Override
-            public void onResponse(Call<List<Playlist>> call, Response<List<Playlist>> response) {
+            public void onResponse(@NonNull Call<List<Playlist>> call, @NonNull Response<List<Playlist>> response) {
                 playlistArrayList = (ArrayList<Playlist>) response.body();
                 playlistAdapter = new PlaylistAdapter(getActivity(), android.R.layout.simple_list_item_1,playlistArrayList);
                 listViewPlaylist.setAdapter(playlistAdapter);
@@ -75,7 +64,7 @@ public class Fragment_Playlist extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<Playlist>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<Playlist>> call, @NonNull Throwable t) {
 
             }
         });

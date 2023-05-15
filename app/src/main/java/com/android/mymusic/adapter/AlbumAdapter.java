@@ -2,7 +2,6 @@ package com.android.mymusic.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.strictmode.IntentReceiverLeakedViolation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,13 +57,10 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder>{
             imgViewAlbum = itemView.findViewById(R.id.imageViewAlbum);
             txtAlbumName = itemView.findViewById(R.id.textViewAlbumName);
             txtAlbumSinger = itemView.findViewById(R.id.textViewSingerNameAlbum);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(context, ListSongsActivity.class);
-                    intent.putExtra("idAlbum",albumArrayList.get(getPosition()));
-                    context.startActivity(intent);
-                }
+            itemView.setOnClickListener(view -> {
+                Intent intent = new Intent(context, ListSongsActivity.class);
+                intent.putExtra("idAlbum",albumArrayList.get(getPosition()));
+                context.startActivity(intent);
             });
         }
     }

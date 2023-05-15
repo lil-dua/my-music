@@ -17,18 +17,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Top PLayList"
-                    android:textColor="@color/white"
+                    android:textColor="@color/primary_text"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/textViewMorePLaylist"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:text="More"
-                    android:textColor="#F3FFC107"
-                    android:textSize="18sp" />
         </RelativeLayout>
 
         <ListView

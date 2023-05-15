@@ -6,15 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".activity.MoreAlbumActivity"
     android:orientation="vertical"
-    android:background="@color/black_love">
+    android:background="@color/background">
 
-    <androidx.appcompat.widget.Toolbar
-        android:background="@drawable/custom_backgound"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        android:id="@+id/toolbarMoreAlbum"
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
-    </androidx.appcompat.widget.Toolbar>
+        android:layout_height="wrap_content"
+        android:padding="7dp"
+        android:background="@color/light_gray">
+
+        <ImageView
+            android:id="@+id/imgBack"
+            android:src="@drawable/ic_back_80"
+            app:tint="@color/primary_black"
+            android:layout_centerVertical="true"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:text="Albums"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_text"
+            android:layout_toRightOf="@id/imgBack"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleViewMoreAlbum"

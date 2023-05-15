@@ -179,7 +179,7 @@ public class ListSongsActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Songs>> call, Throwable t) {
-
+                Toast.makeText(ListSongsActivity.this, "Can not get data list songs", Toast.LENGTH_SHORT).show();
             }
         });
     }

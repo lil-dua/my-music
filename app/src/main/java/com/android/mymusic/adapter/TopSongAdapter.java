@@ -13,10 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.mymusic.R;
-import com.android.mymusic.activity.ListSongsActivity;
 import com.android.mymusic.activity.PlayMusicActivity;
 import com.android.mymusic.model.Songs;
-import com.android.mymusic.model.TopFavoriteSong;
 import com.android.mymusic.service.APIService;
 import com.android.mymusic.service.Dataservice;
 import com.squareup.picasso.Picasso;
@@ -49,6 +47,7 @@ public class TopSongAdapter extends RecyclerView.Adapter<TopSongAdapter.ViewHold
         Songs topFavoriteSong = topFavoriteSongArrayList.get(position);
         holder.txtSongName.setText(topFavoriteSong.getSongName());
         holder.txtSinger.setText(topFavoriteSong.getSinger());
+        holder.txtIndex.setText(position+1+"");
         Picasso.with(context).load(topFavoriteSong.getSongImage()).into(holder.imageViewSong);
     }
 
@@ -58,7 +57,7 @@ public class TopSongAdapter extends RecyclerView.Adapter<TopSongAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView txtSongName,txtSinger;
+        TextView txtSongName,txtSinger,txtIndex;
         ImageView imageViewSong, imageViewLike;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -66,6 +65,7 @@ public class TopSongAdapter extends RecyclerView.Adapter<TopSongAdapter.ViewHold
             txtSinger = itemView.findViewById(R.id.textViewTopSongSingerName);
             imageViewSong = itemView.findViewById(R.id.imageViewTopSong);
             imageViewLike = itemView.findViewById(R.id.imageViewLike);
+            txtIndex = itemView.findViewById(R.id.textViewTopSongIndex);
             //---------setItemOnClick-------
             itemView.setOnClickListener(view -> {
                 Intent intent = new Intent(context, PlayMusicActivity.class);

@@ -1,7 +1,6 @@
 package com.android.mymusic.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.mymusic.R;
 import com.android.mymusic.adapter.TopSongAdapter;
 import com.android.mymusic.model.Songs;
-import com.android.mymusic.model.TopFavoriteSong;
 import com.android.mymusic.service.APIService;
 import com.android.mymusic.service.Dataservice;
 
@@ -47,7 +45,7 @@ public class Fragment_TopFavoriteSong extends Fragment {
         Call<List<Songs>> callback = dataservice.GetFavoriteSong();
         callback.enqueue(new Callback<List<Songs>>() {
             @Override
-            public void onResponse(Call<List<Songs>> call, Response<List<Songs>> response) {
+            public void onResponse(@NonNull Call<List<Songs>> call, @NonNull Response<List<Songs>> response) {
                 ArrayList<Songs> songsArrayList = (ArrayList<Songs>) response.body();
 
                 topSongAdapter = new TopSongAdapter(getActivity(),songsArrayList);
@@ -57,7 +55,7 @@ public class Fragment_TopFavoriteSong extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<Songs>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<Songs>> call, @NonNull Throwable t) {
 
             }
 

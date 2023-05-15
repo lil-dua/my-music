@@ -1,53 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
     android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    app:cardCornerRadius="10dp">
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/linearLayoutAlbum"
+
+    <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="#191414">
+        app:cardCornerRadius="20dp">
 
-        <ImageView
-            android:layout_gravity="center"
-            android:scaleType="fitXY"
-            android:id="@+id/imageViewAlbum"
-            android:layout_width="180dp"
-            android:layout_height="180dp"/>
+            <ImageView
+                android:background="@color/light_gray"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:id="@+id/imageViewAlbum"
+                android:layout_width="160dp"
+                android:layout_height="160dp"/>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp">
 
         <TextView
-            android:textColor="@color/white"
+            android:textColor="@color/primary_black"
             android:maxWidth="200dp"
-            android:textSize="20sp"
+            android:textSize="17sp"
             android:text="Album Name"
             android:ellipsize="end"
             android:maxLines="1"
             android:id="@+id/textViewAlbumName"
-            android:layout_marginRight="2dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"/>
+            android:layout_height="wrap_content"/>
 
         <TextView
-            android:textColor="#F3FFC107"
-            android:textSize="15sp"
+            android:textColor="@color/secondary_text"
+            android:textSize="14sp"
+            android:textStyle="bold"
             android:maxWidth="200dp"
             android:text="Album Singer"
             android:ellipsize="end"
             android:maxLines="1"
             android:id="@+id/textViewSingerNameAlbum"
-            android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewAlbumName"/>
+    </RelativeLayout>
 
-    </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+
+</LinearLayout>

@@ -2,14 +2,12 @@ package com.android.mymusic.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,7 +17,6 @@ import androidx.fragment.app.Fragment;
 import com.android.mymusic.R;
 import com.android.mymusic.activity.CategoryWithThemeActivity;
 import com.android.mymusic.activity.ListSongsActivity;
-import com.android.mymusic.activity.MoreThemeActivity;
 import com.android.mymusic.model.Category;
 import com.android.mymusic.model.CategoryTheme;
 import com.android.mymusic.model.Theme;
@@ -28,8 +25,6 @@ import com.android.mymusic.service.Dataservice;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,20 +32,11 @@ import retrofit2.Response;
 public class Fragment_ThemeNCategory extends Fragment {
     View view;
     HorizontalScrollView horizontalScrollView;
-    TextView textViewMoreCategory;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_themencategory, container, false);
         horizontalScrollView  = view.findViewById(R.id.horizontalScrollView);
-        textViewMoreCategory = view.findViewById(R.id.textViewMoreCategory);
-        textViewMoreCategory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), MoreThemeActivity.class);
-                startActivity(intent);
-            }
-        });
         GetData();
         return view;
     }
@@ -60,11 +46,11 @@ public class Fragment_ThemeNCategory extends Fragment {
         Call<CategoryTheme> callback = dataservice.GetCategoryTheme();
         callback.enqueue(new Callback<CategoryTheme>() {
             @Override
-            public void onResponse(Call<CategoryTheme> call, Response<CategoryTheme> response) {
+            public void onResponse(@NonNull Call<CategoryTheme> call, @NonNull Response<CategoryTheme> response) {
                 CategoryTheme categoryTheme =  response.body();
 
-                final ArrayList<Theme> themeArrayList = new ArrayList<>();
-                themeArrayList.addAll(categoryTheme.getTheme());
+                assert categoryTheme != null;
+                final ArrayList<Theme> themeArrayList = new ArrayList<>(categoryTheme.getTheme());
 
                 final ArrayList<Category> categoryArrayList = new ArrayList<>();
                 categoryArrayList.addAll(categoryTheme.getCategory());
@@ -88,13 +74,10 @@ public class Fragment_ThemeNCategory extends Fragment {
                     linearLayout.addView(cardView);
 
                     final int finalI = i;
-                    imageView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(getActivity(), CategoryWithThemeActivity.class);
-                            intent.putExtra("theme", themeArrayList.get(finalI));
-                            startActivity(intent);
-                        }
+                    imageView.setOnClickListener(view -> {
+                        Intent intent = new Intent(getActivity(), CategoryWithThemeActivity.class);
+                        intent.putExtra("theme", themeArrayList.get(finalI));
+                        startActivity(intent);
                     });
                 }
                 //category array list
@@ -112,20 +95,17 @@ public class Fragment_ThemeNCategory extends Fragment {
 
 
                     final int finalJ = j;
-                    imageView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(getActivity(), ListSongsActivity.class);
-                            intent.putExtra("idCategory",categoryArrayList.get(finalJ));
-                            startActivity(intent);
-                        }
+                    imageView.setOnClickListener(view -> {
+                        Intent intent = new Intent(getActivity(), ListSongsActivity.class);
+                        intent.putExtra("idCategory",categoryArrayList.get(finalJ));
+                        startActivity(intent);
                     });
                 }
                 horizontalScrollView.addView(linearLayout);
             }
 
             @Override
-            public void onFailure(Call<CategoryTheme> call, Throwable t) {
+            public void onFailure(@NonNull Call<CategoryTheme> call, @NonNull Throwable t) {
 
             }
 

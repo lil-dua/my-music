@@ -5,7 +5,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -21,8 +20,6 @@ import com.android.mymusic.R;
 import com.android.mymusic.adapter.ViewPagerPlayMusic;
 import com.android.mymusic.fragment.Fragment_Music_Dish;
 import com.android.mymusic.model.Songs;
-import com.android.mymusic.model.TopFavoriteSong;
-import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;

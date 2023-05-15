@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:background="@color/black_love">
+    android:background="@color/background">
 
     <TextView
         android:id="@+id/textTitleTopSongs"
@@ -14,7 +14,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:text="Top Favorite Songs"
-        android:textColor="@color/white"
+        android:textColor="@color/primary_text"
         android:textSize="30dp"
         android:textStyle="bold" />
 

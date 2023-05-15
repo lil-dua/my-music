@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:scrollbars="none"
     android:fillViewport="true"
-    android:background="@color/black_love">
+    android:background="@color/background">
 
 
     <LinearLayout
@@ -27,13 +27,13 @@
                 android:layout_marginBottom="10dp"
                 android:layout_centerVertical="true"
                 android:text="Home"
-                android:textColor="@color/white"
+                android:textColor="@color/primary_text"
                 android:textSize="30dp"
                 android:textStyle="bold" />
 
             <View
-                android:layout_width="42dp"
-                android:layout_height="42dp"
+                android:layout_width="37dp"
+                android:layout_height="37dp"
                 android:padding="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_alignParentEnd="true"
@@ -41,13 +41,13 @@
                 android:background="@drawable/custom_avatar"/>
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="11dp"
                 android:layout_marginBottom="10dp"
                 android:src="@drawable/ic_person_40" />
 
@@ -58,6 +58,12 @@
             android:id="@+id/fragmentBanner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
+        <fragment
+            android:id="@+id/fragmentAlbum"
+            android:name="com.android.mymusic.fragment.Fragment_Album"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <fragment
             android:name="com.android.mymusic.fragment.Fragment_Playlist"
@@ -71,11 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <fragment
-            android:id="@+id/fragmentAlbum"
-            android:name="com.android.mymusic.fragment.Fragment_Album"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+
 
 
 

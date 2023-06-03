@@ -1,13 +1,11 @@
 package com.android.mymusic.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
+import android.widget.ImageView;
 
 import com.android.mymusic.R;
 import com.android.mymusic.adapter.MorePLaylistAdapter;
@@ -24,7 +22,7 @@ import retrofit2.Response;
 
 public class MorePlaylistActivity extends AppCompatActivity {
 
-    Toolbar toolbar;
+    ImageView imageBack;
     RecyclerView recyclerViewMorePlaylist;
     MorePLaylistAdapter morePLaylistAdapter;
     @Override
@@ -32,7 +30,6 @@ public class MorePlaylistActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more_playlist);
         Mapping();
-        Init();
         GetData();
     }
 
@@ -55,21 +52,11 @@ public class MorePlaylistActivity extends AppCompatActivity {
         });
     }
 
-    private void Init() {
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Play Lists");
-        toolbar.setTitleTextColor(getResources().getColor(R.color.yellow));
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-    }
 
     private void Mapping() {
-        toolbar = findViewById(R.id.toolbarMorePlaylist);
+        imageBack = findViewById(R.id.imgBack);
         recyclerViewMorePlaylist = findViewById(R.id.recycleViewMorePlaylist);
+
+        imageBack.setOnClickListener(v -> onBackPressed());
     }
 }

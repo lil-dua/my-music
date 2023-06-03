@@ -1,49 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginLeft="10dp"
+    android:background="@color/primary_black"
+    android:orientation="vertical">
 
-    <ImageView
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="5dp"
-        android:id="@+id/imageButtonBackgroundPlaylist"
-        android:scaleType="fitXY"
-        android:layout_width="match_parent"
-        android:layout_height="110dp"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="110dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="8dp"
-       />
-
-    <ImageView
-
-        android:id="@+id/imageViewIconPlaylist"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_alignBottom="@id/imageButtonBackgroundPlaylist"
-        android:layout_marginLeft="15dp"
-        android:layout_marginBottom="15dp"
-        android:elevation="6dp"
-        android:scaleType="fitXY" />
-
-    <TextView
-        android:layout_marginLeft="10dp"
-        android:id="@+id/textViewPlaylistName"
+    <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/imageViewIconPlaylist"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="5dp"
-        android:layout_toRightOf="@id/imageViewIconPlaylist"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:text="Name of Song"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-</RelativeLayout>
+        android:layout_margin="7dp">
+
+        <ImageView
+            android:id="@+id/imageViewPlaylist"
+            android:background="@color/light_gray"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:layout_width="160dp"
+            android:layout_height="160dp"/>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp">
+
+        <TextView
+            android:id="@+id/textViewPlaylistName"
+            android:textColor="@color/white"
+            android:maxWidth="200dp"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:text="Album Name"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_marginLeft="7dp"
+            android:layout_marginBottom="7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

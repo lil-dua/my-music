@@ -37,7 +37,7 @@ public class MoreThemeAdapter extends RecyclerView.Adapter<MoreThemeAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-    Theme theme = themeArrayList.get(position);
+        Theme theme = themeArrayList.get(position);
         Picasso.with(context).load(theme.getThemeImage()).into(holder.imageViewMoreTheme);
     }
 
@@ -52,13 +52,10 @@ public class MoreThemeAdapter extends RecyclerView.Adapter<MoreThemeAdapter.View
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageViewMoreTheme = itemView.findViewById(R.id.imageViewMoreThemeLine);
-            imageViewMoreTheme.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(context, CategoryWithThemeActivity.class);
-                    intent.putExtra("theme",themeArrayList.get(getPosition()));
-                    context.startActivity(intent);
-                }
+            imageViewMoreTheme.setOnClickListener(view -> {
+                Intent intent = new Intent(context, CategoryWithThemeActivity.class);
+                intent.putExtra("theme",themeArrayList.get(getPosition()));
+                context.startActivity(intent);
             });
         }
     }

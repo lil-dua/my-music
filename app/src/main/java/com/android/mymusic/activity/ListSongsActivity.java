@@ -213,8 +213,8 @@ public class ListSongsActivity extends AppCompatActivity {
             if(intent.hasExtra("banner")){
                 advertisement = (Advertisement) intent.getSerializableExtra("banner");
             }
-            if(intent.hasExtra("itemPlaylist")){
-                playlist = (Playlist) intent.getSerializableExtra("itemPlaylist");
+            if(intent.hasExtra("idPlaylist")){
+                playlist = (Playlist) intent.getSerializableExtra("idPlaylist");
             }
             if(intent.hasExtra("idCategory")){
                 category = (Category) intent.getSerializableExtra("idCategory");

@@ -1,38 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:layout_margin="5dp"
-    android:layout_marginTop="10dp"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="10dp"
+    android:background="@color/primary_black"
+    android:orientation="vertical">
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_gravity="center"
+
+    <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="7dp">
 
         <ImageView
-            android:scaleType="centerCrop"
-            android:id="@+id/imageViewMorePlaylist"
-            android:src="@mipmap/ic_launcher_music"
-            android:layout_width="180dp"
-            android:layout_height="180dp"/>
-    </FrameLayout>
+            android:id="@+id/imageViewPlaylist"
+            android:background="@color/light_gray"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:layout_width="160dp"
+            android:layout_height="160dp"/>
 
-    <TextView
-        android:textSize="18sp"
-        android:textColor="@color/white"
-        android:text="Playlist name"
-        android:gravity="left"
-        android:maxWidth="200dp"
-        android:lines="2"
-        android:maxLines="2"
-        android:ellipsize="end"
-        android:id="@+id/textViewMorePLaylistName"
+
+
+    </androidx.cardview.widget.CardView>
+
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp">
+
+        <TextView
+            android:id="@+id/textViewPlaylistName"
+            android:textColor="@color/white"
+            android:maxWidth="200dp"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:text="Album Name"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_marginLeft="7dp"
+            android:layout_marginBottom="7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
 
 
 

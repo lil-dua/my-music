@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.android.mymusic.R;
 import com.android.mymusic.adapter.MorePLaylistAdapter;
@@ -27,7 +28,7 @@ import retrofit2.Response;
 
 public class MoreThemeActivity extends AppCompatActivity {
 
-    Toolbar toolbarMoreTheme;
+    ImageView imageBack;
     RecyclerView recyclerViewMoreTheme;
     MoreThemeAdapter moreThemeAdapter;
 
@@ -36,7 +37,6 @@ public class MoreThemeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more_theme);
         Mapping();
-        Init();
         GetData();
     }
 
@@ -59,22 +59,12 @@ public class MoreThemeActivity extends AppCompatActivity {
         });
     }
 
-    private void Init() {
-        setSupportActionBar(toolbarMoreTheme);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Themes");
-        toolbarMoreTheme.setTitleTextColor(getResources().getColor(R.color.yellow));
-        toolbarMoreTheme.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-    }
 
     private void Mapping(){
+        imageBack = findViewById(R.id.imgBack);
         recyclerViewMoreTheme = findViewById(R.id.recycleViewMoreTheme);
-        toolbarMoreTheme = findViewById(R.id.toolbarMoreTheme);
+
+        imageBack.setOnClickListener(v -> onBackPressed());
 
     }
 

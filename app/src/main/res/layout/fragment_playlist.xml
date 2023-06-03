@@ -23,10 +23,10 @@
 
         </RelativeLayout>
 
-        <ListView
-            android:id="@+id/listViewPlaylist"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleViewPlaylist"
+            android:layout_below="@+id/relativePlaylist"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/relativePlaylist" />
+            android:layout_height="wrap_content"/>
 
 </RelativeLayout>

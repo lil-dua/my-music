@@ -1,27 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black_love"
+    android:background="@color/background"
+    android:orientation="vertical"
     tools:context=".activity.MorePlaylistActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:background="@drawable/custom_backgound"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        android:id="@+id/toolbarMorePlaylist"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
+        android:layout_height="wrap_content"
+        android:padding="7dp"
+        android:background="@color/purple_500">
 
-    </androidx.appcompat.widget.Toolbar>
+        <ImageView
+            android:id="@+id/imgBack"
+            android:src="@drawable/ic_back_80"
+            app:tint="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:text="Playlists"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_toRightOf="@id/imgBack"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleViewMorePlaylist"
-        android:layout_below="@id/toolbarMorePlaylist"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     </androidx.recyclerview.widget.RecyclerView>
     
-</RelativeLayout>
+</LinearLayout>

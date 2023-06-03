@@ -5,16 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.MoreThemeActivity"
-    android:background="@color/black_love"
+    android:background="@color/background"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
-        android:background="@drawable/custom_backgound"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        android:id="@+id/toolbarMoreTheme"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
-    </androidx.appcompat.widget.Toolbar>
+        android:layout_height="wrap_content"
+        android:padding="7dp"
+        android:background="@color/teal_200">
+
+        <ImageView
+            android:id="@+id/imgBack"
+            android:src="@drawable/ic_back_80"
+            app:tint="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:text="Themes"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_toRightOf="@id/imgBack"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleViewMoreTheme"

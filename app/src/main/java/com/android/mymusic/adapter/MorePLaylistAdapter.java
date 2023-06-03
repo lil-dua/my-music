@@ -41,7 +41,7 @@ public class MorePLaylistAdapter extends RecyclerView.Adapter<MorePLaylistAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Playlist playlist = playlistArrayList.get(position);
-        Picasso.with(context).load(playlist.getPlaylistImage()).into(holder.imageViewPlaylistImage);
+        Picasso.with(context).load(playlist.getPlaylistIcon()).into(holder.imageViewPlaylistImage);
         holder.txtPlaylistName.setText(playlist.getPlaylistName());
     }
 
@@ -56,15 +56,12 @@ public class MorePLaylistAdapter extends RecyclerView.Adapter<MorePLaylistAdapte
         TextView txtPlaylistName;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageViewPlaylistImage = itemView.findViewById(R.id.imageViewMorePlaylist);
-            txtPlaylistName = itemView.findViewById(R.id.textViewMorePLaylistName);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(context, ListSongsActivity.class);
-                    intent.putExtra("itemPlaylist",playlistArrayList.get(getPosition()));
-                    context.startActivity(intent);
-                }
+            imageViewPlaylistImage = itemView.findViewById(R.id.imageViewPlaylist);
+            txtPlaylistName = itemView.findViewById(R.id.textViewPlaylistName);
+            itemView.setOnClickListener(view -> {
+                Intent intent = new Intent(context, ListSongsActivity.class);
+                intent.putExtra("idPlaylist",playlistArrayList.get(getPosition()));
+                context.startActivity(intent);
             });
 
         }

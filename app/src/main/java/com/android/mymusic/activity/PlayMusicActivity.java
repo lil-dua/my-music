@@ -1,5 +1,4 @@
 package com.android.mymusic.activity;
-
 import static com.android.mymusic.notification.MediaNotification.CHANNEL_ID;
 
 import androidx.annotation.NonNull;
@@ -64,11 +63,11 @@ public class PlayMusicActivity extends AppCompatActivity {
     boolean repeat = false;
     boolean checkRandom = false;
     boolean next = false;
-
-    // Khai báo action cho các broadcast intent
     private static final String ACTION_PREVIOUS = "com.android.mymusic.ACTION_PREVIOUS";
     private static final String ACTION_PAUSE = "com.android.mymusic.ACTION_PAUSE";
     private static final String ACTION_NEXT = "com.android.mymusic.ACTION_NEXT";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +96,7 @@ public class PlayMusicActivity extends AppCompatActivity {
                     public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
                         MediaSessionCompat mediaSessionCompat = new MediaSessionCompat(PlayMusicActivity.this, "tag");
 
+
                         // Tạo PendingIntent cho action Previous
                         Intent previousIntent = new Intent(ACTION_PREVIOUS);
                         PendingIntent previousPendingIntent = PendingIntent.getBroadcast(
@@ -123,6 +123,7 @@ public class PlayMusicActivity extends AppCompatActivity {
                                 nextIntent,
                                 PendingIntent.FLAG_UPDATE_CURRENT
                         );
+
                         // Build notification
                         Notification notification = new NotificationCompat.Builder(PlayMusicActivity.this, CHANNEL_ID)
                                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
@@ -165,92 +166,86 @@ public class PlayMusicActivity extends AppCompatActivity {
             if (action != null) {
                 if (action.equals(ACTION_PREVIOUS)) {
                     // Xử lý sự kiện Previous
-                    if (songsArrayList.size() > 0){
-                        if(mediaPlayer != null && mediaPlayer.isPlaying() || mediaPlayer != null){
-                            mediaPlayer.stop();
-                            mediaPlayer.release();
-                            mediaPlayer = null;
-                        }
-                        if(position < (songsArrayList.size())){
-                            imageButtonPlay.setImageResource(R.drawable.ic_pause_100);
-                            position++;
-                            if(repeat){
-                                if(position == 0){
-                                    position = songsArrayList.size();
-                                }
-                                position -= 1;
-                            }
-                            if(checkRandom){
-                                Random random = new Random();
-                                int index = random.nextInt(songsArrayList.size());
-                                if(index == position){
-                                    position = index - 1;
-                                }
-                                position = index;
-                            }
-                            if(position > (songsArrayList.size() - 1)){
-                                position = 0;
-                            }
-                            new PlayMusic().execute(songsArrayList.get(position).getSongLink());
-                            Objects.requireNonNull(getSupportActionBar()).setTitle(songsArrayList.get(position).getSongName());
-                            UpdateTime();
-                        }
-                    }
-                    imageButtonPrevious.setClickable(false);
-                    imageButtonNext.setClickable(false);
-                    Handler handler1 = new Handler();
-                    handler1.postDelayed(() -> {
-                        imageButtonPrevious.setClickable(true);
-                        imageButtonNext.setClickable(true);
-                    },500);
-                    // ...
+                    onPreviousClicked();
                 } else if (action.equals(ACTION_PAUSE)) {
                     // Xử lý sự kiện Pause
-                    // ...
+                    onPlayClick();
+                    updateMediaNotification();
                 } else if (action.equals(ACTION_NEXT)) {
                     // Xử lý sự kiện Next
-
-                    if (songsArrayList.size() > 0){
-                        if(mediaPlayer != null && mediaPlayer.isPlaying() || mediaPlayer != null){
-                            mediaPlayer.stop();
-                            mediaPlayer.release();
-                            mediaPlayer = null;
-                        }
-                        if(position < (songsArrayList.size())){
-                            imageButtonPlay.setImageResource(R.drawable.ic_pause_100);
-                            position--;
-                            if(position < 0){
-                                position = songsArrayList.size() - 1;
-                            }
-                            if(repeat){
-                                position += 1;
-                            }
-                            if(checkRandom){
-                                Random random = new Random();
-                                int index = random.nextInt(songsArrayList.size());
-                                if(index == position){
-                                    position = index - 1;
-                                }
-                                position = index;
-                            }
-                            new PlayMusic().execute(songsArrayList.get(position).getSongLink());
-                            Objects.requireNonNull(getSupportActionBar()).setTitle(songsArrayList.get(position).getSongName());
-                            UpdateTime();
-                        }
-                    }
-                    imageButtonPrevious.setClickable(false);
-                    imageButtonNext.setClickable(false);
-                    Handler handler1 = new Handler();
-                    handler1.postDelayed(() -> {
-                        imageButtonPrevious.setClickable(true);
-                        imageButtonNext.setClickable(true);
-                    },500);
-                    // ...
+                    onNextClicked();
                 }
             }
         }
-
     };
+
+    private void updateMediaNotification() {
+
+        // Load the image from the URL using Glide
+        Glide.with(this)
+                .asBitmap()
+                .load(songsArrayList.get(position).getSongImage())
+                .into(new CustomTarget<Bitmap>() {
+                    @Override
+                    public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                        int playIcon = mediaPlayer.isPlaying() ? R.drawable.ic_pause_24 : R.drawable.ic_play_24;
+
+                        // Tạo PendingIntent cho action Previous
+                        Intent previousIntent = new Intent(ACTION_PREVIOUS);
+                        PendingIntent previousPendingIntent = PendingIntent.getBroadcast(
+                                PlayMusicActivity.this,
+                                0,
+                                previousIntent,
+                                PendingIntent.FLAG_UPDATE_CURRENT
+                        );
+
+                        // Tạo PendingIntent cho action Pause
+                        Intent pauseIntent = new Intent(ACTION_PAUSE);
+                        PendingIntent pausePendingIntent = PendingIntent.getBroadcast(
+                                PlayMusicActivity.this,
+                                0,
+                                pauseIntent,
+                                PendingIntent.FLAG_UPDATE_CURRENT
+                        );
+
+                        // Tạo PendingIntent cho action Next
+                        Intent nextIntent = new Intent(ACTION_NEXT);
+                        PendingIntent nextPendingIntent = PendingIntent.getBroadcast(
+                                PlayMusicActivity.this,
+                                0,
+                                nextIntent,
+                                PendingIntent.FLAG_UPDATE_CURRENT
+                        );
+
+                        MediaSessionCompat mediaSessionCompat = new MediaSessionCompat(PlayMusicActivity.this, "tag");
+                        // Create the updated notification
+                        Notification updatedNotification = new NotificationCompat.Builder(PlayMusicActivity.this, CHANNEL_ID)
+                                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                                .setSmallIcon(R.drawable.ic_music_note_24)
+                                .setLargeIcon(resource)
+                                .setSubText("Music Player")
+                                .setContentTitle(songsArrayList.get(position).getSongName())
+                                .setContentText(songsArrayList.get(position).getSinger())
+                                .addAction(R.drawable.ic_previous_24, "Previous", previousPendingIntent)
+                                .addAction(playIcon, "Play", pausePendingIntent)  // Update the play icon
+                                .addAction(R.drawable.ic_next_24, "Next", nextPendingIntent)
+                                .setStyle(new androidx.media.app.NotificationCompat.MediaStyle()
+                                        .setShowActionsInCompactView(1)
+                                        .setMediaSession(mediaSessionCompat.getSessionToken()))
+                                .build();
+
+                        NotificationManagerCompat managerCompat = NotificationManagerCompat.from(PlayMusicActivity.this);
+                        managerCompat.notify(1, updatedNotification);
+                    }
+
+                    @Override
+                    public void onLoadCleared(@Nullable Drawable placeholder) {
+
+                    }
+                });
+
+    }
+
 
     private void FirstAction(){
         mediaPlayer = new MediaPlayer();
@@ -259,8 +254,6 @@ public class PlayMusicActivity extends AppCompatActivity {
         new PlayMusic().execute(songsArrayList.get(position).getSongLink());
         Objects.requireNonNull(getSupportActionBar()).setTitle(songsArrayList.get(position).getSongName());
         UpdateTime();
-
-//        Picasso.with(this).load(songsArrayList.get(position).getSongImage()).into();
     }
     private void EventClick() {
         Handler handler = new Handler();
@@ -279,47 +272,15 @@ public class PlayMusicActivity extends AppCompatActivity {
         },500);
         //----------------Button Play-----------------
         imageButtonPlay.setOnClickListener(view -> {
-                if(mediaPlayer != null && mediaPlayer.isPlaying()){
-                    mediaPlayer.pause();
-                    fragment_music_dish.onPauseClick();
-                    imageButtonPlay.setImageResource(R.drawable.ic_play_100);
-                }else {
-                    assert mediaPlayer != null;
-                    mediaPlayer.start();
-                    fragment_music_dish.onResumeClick();
-                    imageButtonPlay.setImageResource(R.drawable.ic_pause_100);
-                }
+                onPlayClick();
         });
         //-----------------Button Repeat-----------------
         imageButtonRepeat.setOnClickListener(view -> {
-            if(!repeat){
-                if(checkRandom){
-                    checkRandom = false;
-                    imageButtonRepeat.setImageResource(R.drawable.ic_repeated_50);
-                    imageButtonShuffle.setImageResource(R.drawable.icons8_shuffle_50);
-                }
-                imageButtonRepeat.setImageResource(R.drawable.ic_repeated_50);
-                repeat = true;
-            }else {
-                imageButtonRepeat.setImageResource(R.drawable.icons8_repeat_50);
-                repeat = false;
-            }
+            onRepeatSelected();
         });
         //-----------------Button Shuffle-----------------
         imageButtonShuffle.setOnClickListener(view -> {
-            if(!checkRandom){
-                if(repeat){
-                    repeat = false;
-                    imageButtonShuffle.setImageResource(R.drawable.icons8_shuffled_50);
-                    imageButtonRepeat.setImageResource(R.drawable.icons8_repeat_50);
-
-                }
-                imageButtonShuffle.setImageResource(R.drawable.icons8_shuffled_50);
-                checkRandom = true;
-            }else {
-                imageButtonShuffle.setImageResource(R.drawable.icons8_shuffle_50);
-                checkRandom = false;
-            }
+            onShuffleSelected();
         });
         //-----------------Seekbar Time-----------------
         seekBarTime.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -340,93 +301,144 @@ public class PlayMusicActivity extends AppCompatActivity {
         });
         //-----------------Button Next---------------------
         imageButtonNext.setOnClickListener(view -> {
-            if (songsArrayList.size() > 0){
-                if(mediaPlayer != null && mediaPlayer.isPlaying() || mediaPlayer != null){
-                    mediaPlayer.stop();
-                    mediaPlayer.release();
-                    mediaPlayer = null;
-                }
-                if(position < (songsArrayList.size())){
-                    imageButtonPlay.setImageResource(R.drawable.ic_pause_100);
-                    position++;
-                    if(repeat){
-                        if(position == 0){
-                            position = songsArrayList.size();
-                        }
-                        position -= 1;
-                    }
-                    if(checkRandom){
-                        Random random = new Random();
-                        int index = random.nextInt(songsArrayList.size());
-                        if(index == position){
-                            position = index - 1;
-                        }
-                        position = index;
-                    }
-                    if(position > (songsArrayList.size() - 1)){
-                        position = 0;
-                    }
-                    new PlayMusic().execute(songsArrayList.get(position).getSongLink());
-                    fragment_music_dish.PlayMusic(songsArrayList.get(position).getSongImage());
-                    Objects.requireNonNull(getSupportActionBar()).setTitle(songsArrayList.get(position).getSongName());
-                    UpdateTime();
-                }
-            }
-            imageButtonPrevious.setClickable(false);
-            imageButtonNext.setClickable(false);
-
-            SendMediaNotification();
-
-            Handler handler1 = new Handler();
-            handler1.postDelayed(() -> {
-                imageButtonPrevious.setClickable(true);
-                imageButtonNext.setClickable(true);
-            },500);
-
-
+            onNextClicked();
         });
         //-----------------Button Previous-----------------
         imageButtonPrevious.setOnClickListener(view -> {
-            if (songsArrayList.size() > 0){
-                if(mediaPlayer != null && mediaPlayer.isPlaying() || mediaPlayer != null){
-                    mediaPlayer.stop();
-                    mediaPlayer.release();
-                    mediaPlayer = null;
-                }
-                if(position < (songsArrayList.size())){
-                    imageButtonPlay.setImageResource(R.drawable.ic_pause_100);
-                    position--;
-                    if(position < 0){
-                        position = songsArrayList.size() - 1;
-                    }
-                    if(repeat){
-                        position += 1;
-                    }
-                    if(checkRandom){
-                        Random random = new Random();
-                        int index = random.nextInt(songsArrayList.size());
-                        if(index == position){
-                            position = index - 1;
-                        }
-                        position = index;
-                    }
-                    new PlayMusic().execute(songsArrayList.get(position).getSongLink());
-                    fragment_music_dish.PlayMusic(songsArrayList.get(position).getSongImage());
-                    Objects.requireNonNull(getSupportActionBar()).setTitle(songsArrayList.get(position).getSongName());
-                    UpdateTime();
-                }
-            }
-
-            SendMediaNotification();
-
-            imageButtonPrevious.setClickable(false);
-            imageButtonNext.setClickable(false);
-            Handler handler1 = new Handler();
-            handler1.postDelayed(() -> {
-                imageButtonPrevious.setClickable(true);
-                imageButtonNext.setClickable(true);
-            },500);
+            onPreviousClicked();
         });
+    }
+
+    private void onPreviousClicked() {
+        if (songsArrayList.size() > 0){
+            if(mediaPlayer != null && mediaPlayer.isPlaying() || mediaPlayer != null){
+                mediaPlayer.stop();
+                mediaPlayer.release();
+                mediaPlayer = null;
+            }
+            if(position < (songsArrayList.size())){
+                imageButtonPlay.setImageResource(R.drawable.ic_pause_100);
+                position--;
+                if(position < 0){
+                    position = songsArrayList.size() - 1;
+                }
+                if(repeat){
+                    position += 1;
+                }
+                if(checkRandom){
+                    Random random = new Random();
+                    int index = random.nextInt(songsArrayList.size());
+                    if(index == position){
+                        position = index - 1;
+                    }
+                    position = index;
+                }
+                new PlayMusic().execute(songsArrayList.get(position).getSongLink());
+                fragment_music_dish.PlayMusic(songsArrayList.get(position).getSongImage());
+                Objects.requireNonNull(getSupportActionBar()).setTitle(songsArrayList.get(position).getSongName());
+                UpdateTime();
+            }
+        }
+
+        SendMediaNotification();
+
+        imageButtonPrevious.setClickable(false);
+        imageButtonNext.setClickable(false);
+        Handler handler1 = new Handler();
+        handler1.postDelayed(() -> {
+            imageButtonPrevious.setClickable(true);
+            imageButtonNext.setClickable(true);
+        },500);
+    }
+
+    private void onNextClicked() {
+        if (songsArrayList.size() > 0){
+            if(mediaPlayer != null && mediaPlayer.isPlaying() || mediaPlayer != null){
+                mediaPlayer.stop();
+                mediaPlayer.release();
+                mediaPlayer = null;
+            }
+            if(position < (songsArrayList.size())){
+                imageButtonPlay.setImageResource(R.drawable.ic_pause_100);
+                position++;
+                if(repeat){
+                    if(position == 0){
+                        position = songsArrayList.size();
+                    }
+                    position -= 1;
+                }
+                if(checkRandom){
+                    Random random = new Random();
+                    int index = random.nextInt(songsArrayList.size());
+                    if(index == position){
+                        position = index - 1;
+                    }
+                    position = index;
+                }
+                if(position > (songsArrayList.size() - 1)){
+                    position = 0;
+                }
+                new PlayMusic().execute(songsArrayList.get(position).getSongLink());
+                fragment_music_dish.PlayMusic(songsArrayList.get(position).getSongImage());
+                Objects.requireNonNull(getSupportActionBar()).setTitle(songsArrayList.get(position).getSongName());
+                UpdateTime();
+            }
+        }
+        imageButtonPrevious.setClickable(false);
+        imageButtonNext.setClickable(false);
+
+        SendMediaNotification();
+
+        Handler handler1 = new Handler();
+        handler1.postDelayed(() -> {
+            imageButtonPrevious.setClickable(true);
+            imageButtonNext.setClickable(true);
+        },500);
+
+    }
+
+    private void onShuffleSelected() {
+        if(!checkRandom){
+            if(repeat){
+                repeat = false;
+                imageButtonShuffle.setImageResource(R.drawable.icons8_shuffled_50);
+                imageButtonRepeat.setImageResource(R.drawable.icons8_repeat_50);
+
+            }
+            imageButtonShuffle.setImageResource(R.drawable.icons8_shuffled_50);
+            checkRandom = true;
+        }else {
+            imageButtonShuffle.setImageResource(R.drawable.icons8_shuffle_50);
+            checkRandom = false;
+        }
+    }
+
+    private void onRepeatSelected() {
+        if(!repeat){
+            if(checkRandom){
+                checkRandom = false;
+                imageButtonRepeat.setImageResource(R.drawable.ic_repeated_50);
+                imageButtonShuffle.setImageResource(R.drawable.icons8_shuffle_50);
+            }
+            imageButtonRepeat.setImageResource(R.drawable.ic_repeated_50);
+            repeat = true;
+        }else {
+            imageButtonRepeat.setImageResource(R.drawable.icons8_repeat_50);
+            repeat = false;
+        }
+    }
+
+    private void onPlayClick() {
+        if(mediaPlayer != null && mediaPlayer.isPlaying()){
+            mediaPlayer.pause();
+            fragment_music_dish.onPauseClick();
+            imageButtonPlay.setImageResource(R.drawable.ic_play_100);
+        }else {
+            assert mediaPlayer != null;
+            mediaPlayer.start();
+            fragment_music_dish.onResumeClick();
+            imageButtonPlay.setImageResource(R.drawable.ic_pause_100);
+        }
     }
 
     private void GetDataFromIntent() {

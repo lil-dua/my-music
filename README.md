@@ -6,6 +6,25 @@ This is a demo of a music player I wrote, so it's based on a template I've read 
 <img src="Screenshot_1.png" width = "250" >   <img src="Screenshot_2.png" width = "250" >   <img src="Screenshot_3.png" width = "250" >   <img src="Screenshot_4.png" width = "250" >   <img src="Screenshot_5.png" width = "250" >   <img src="Screenshot_6.png" width = "250" >   <img src="Screenshot_7.png" width = "250" >
 </pre>
 
+ # Implementations:
+    // network
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+
+    // load image
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+
+    //circle indicator for banner
+    implementation 'me.relex:circleindicator:1.2.2@aar'
+    implementation 'com.eftimoff:android-viewpager-transformers:1.0.1@aar'
+    
+    // circle image view for play song image
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    // notification
+    implementation "androidx.media:media:1.2.0"
+    
 
 # 💫About Me :
 

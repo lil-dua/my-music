@@ -13,14 +13,29 @@
         android:roundIcon="@mipmap/ic_launcher_music"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyMusic">
+        <activity
+            android:name=".activity.UserProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <!-- Register MediaButtonReceiver -->
-        <receiver android:name="androidx.media.session.MediaButtonReceiver"
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- Register MediaButtonReceiver -->
+        <receiver
+            android:name="androidx.media.session.MediaButtonReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MEDIA_BUTTON" />
             </intent-filter>
         </receiver>
+
         <activity
             android:name=".activity.PlayMusicActivity"
             android:exported="false" />
@@ -41,13 +56,7 @@
             android:exported="false" />
         <activity
             android:name=".activity.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
     </application>
 
 </manifest>

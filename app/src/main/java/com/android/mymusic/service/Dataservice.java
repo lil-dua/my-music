@@ -2,6 +2,7 @@ package com.android.mymusic.service;
 
 import com.android.mymusic.model.Advertisement;
 import com.android.mymusic.model.Album;
+import com.android.mymusic.model.ApiRespone;
 import com.android.mymusic.model.Category;
 import com.android.mymusic.model.CategoryTheme;
 import com.android.mymusic.model.Playlist;
@@ -75,4 +76,16 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("search.php")
     Call<List<Songs>> GetSearchSong(@Field("keyword") String keyword);
+
+    @FormUrlEncoded
+    @POST("register.php")
+    Call<ApiRespone> PerformUserSignUp(@Field("email") String email,
+                                      @Field("password") String password,
+                                      @Field("username") String username,
+                                      @Field("phone") String phone,
+                                      @Field("image") String image);
+
+    @FormUrlEncoded
+    @POST("login.php")
+    Call<ApiRespone> PerformUserLogin(@Field("email") String email, @Field("password") String password);
 }

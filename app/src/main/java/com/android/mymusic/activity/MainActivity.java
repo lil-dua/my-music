@@ -1,6 +1,8 @@
 package com.android.mymusic.activity;
 
 import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -16,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        String email = getIntent().getStringExtra("email");
+        showToast("Welcome "+email);
 
         TabLayout tabLayout = findViewById(R.id.myTabLayout);
         ViewPager2 viewPager = findViewById(R.id.myViewPager);
@@ -39,4 +43,10 @@ public class MainActivity extends AppCompatActivity {
            }
         }).attach(); //must remember this .attach()
     }
+
+    //show Toast
+    private void showToast(String message){
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+    }
+    //
 }

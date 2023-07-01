@@ -18,5 +18,6 @@
     <color name="primary_text">#1D1D1D</color>
     <color name="secondary_text">#A9A9A9</color>
     <color name="accent">#EEC1A0</color>
+    <color name="input_background">#ECECEC</color>
 
 </resources>

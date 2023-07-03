@@ -13,7 +13,7 @@
         android:paddingBottom="20dp">
 
         <RelativeLayout
-            android:id="@+id/imgUser"
+            android:id="@+id/rellay1_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -21,6 +21,7 @@
             android:background="@drawable/circle_border">
 
             <ImageView
+                android:id="@+id/imgUser"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginStart="9dp"
@@ -31,7 +32,7 @@
                 android:src="@drawable/image_profile"
                 android:background="@drawable/circle"
                 android:padding="3dp"
-                android:scaleType="fitXY"
+                android:scaleType="centerCrop"
                  />
 
         </RelativeLayout>
@@ -40,15 +41,13 @@
             android:id="@+id/textView_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imgUser"
+            android:layout_below="@+id/rellay1_1"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15sp"
             android:fontFamily="sans-serif-light"
-            android:text="Hoàng Hữu Thơm"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="32sp" />
-
-
 
 
         <ImageView
@@ -94,10 +93,11 @@
                     android:textSize="13sp" />
 
                 <TextView
+                    android:id="@+id/textViewEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="huuthom02090@gmail.com"
+                    android:text=""
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
@@ -124,10 +124,11 @@
                     android:textSize="13sp" />
 
                 <TextView
+                    android:id="@+id/textViewPhone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="0972524570"
+                    android:text=""
                     android:textColor="#000000"
                     android:textSize="18sp" />
 

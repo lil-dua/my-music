@@ -8,6 +8,7 @@ import com.android.mymusic.model.CategoryTheme;
 import com.android.mymusic.model.Playlist;
 import com.android.mymusic.model.Songs;
 import com.android.mymusic.model.Theme;
+import com.android.mymusic.model.User;
 
 import java.util.List;
 
@@ -88,4 +89,11 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("login.php")
     Call<ApiRespone> PerformUserLogin(@Field("email") String email, @Field("password") String password);
+
+    @FormUrlEncoded
+    @POST("getuser.php")
+    Call<List<User>> GetUser(@Field("email") String email);
+
+
+
 }

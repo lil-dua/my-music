@@ -63,7 +63,6 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void signUp() {
         loading(true);
-
         //logic sign up below
         String email = binding.inputEmail.getText().toString().trim();
         String password = binding.inputPassword.getText().toString().trim();
